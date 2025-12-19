@@ -1,8 +1,22 @@
-import { View } from "react-native"
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import ScreenLogin from "./ScreenLogin"
+import ScreenRegister from "./ScreenRegister"
 
 export default function App() {
+  const Stack = createNativeStackNavigator()
   return (
-    <View style={{ flex: 1 }}>
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="ScreenLogin">
+        <Stack.Screen name="ScreenLogin"
+          component={ScreenLogin}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen name="ScreenRegister"
+          component={ScreenRegister}
+          options={{ headerShown: false }}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }

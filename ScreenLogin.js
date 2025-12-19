@@ -1,4 +1,5 @@
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, Image, ImageBackground } from 'react-native';
+import { Link } from '@react-navigation/native'
 
 export default function ScreenLogin() {
 
@@ -29,7 +30,7 @@ export default function ScreenLogin() {
 
         <TouchableOpacity
           style={{ width: "70%", padding: 10, alignItems: "center", justifyContent: "center" }}>
-          <Text style={styles.txtlink}>Create a new Account</Text>
+          <Link screen="ScreenRegister" style={styles.txtlink}>Create a new Account</Link>
         </TouchableOpacity>
 
       </View>
