@@ -1,22 +1,8 @@
-import { StyleSheet, Text, View, TextInput, TouchableOpacity, Image, ImageBackground, Alert } from 'react-native';
+import { StyleSheet, Text, View, TextInput, TouchableOpacity, Image, ImageBackground } from 'react-native';
 import { Link } from '@react-navigation/native'
-import { useState } from 'react';
+
 
 export default function ScreenLogin() {
-  const [username, setusername] = useState("")
-  const [password, setpassword] = useState("")
-
-  const handle_login = () => {
-    if (username == "admin" && password == "admin") {
-      Alert.alert("Accés autorisé !")
-    }
-    else if (username == "" || password == "") {
-      Alert.alert("Remplire username et password !")
-    }
-    else {
-      Alert.alert("Accés non autorisé !")
-    }
-  }
 
   return (
     <ImageBackground

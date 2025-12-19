@@ -1,6 +1,7 @@
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, ImageBackground, Image } from 'react-native';
 import { Link } from '@react-navigation/native'
 
+
 export default function ScreenRegister() {
 
     return (
