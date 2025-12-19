@@ -45,7 +45,7 @@ export default function ScreenLogin() {
           value={password}
           onChangeText={setpassword} />
 
-        <TouchableOpacity
+        <TouchableOpacity onPress={handle_login}
           style={styles.btn}>
           <Text style={styles.txtbtn}>Login</Text>
         </TouchableOpacity>
