@@ -49,7 +49,7 @@ export default function ScreenLogin() {
         </TouchableOpacity>
 
         <TouchableOpacity
-          style={{ width: "70%", padding: 10, alignItems: "center", justifyContent: "center" }}>
+          style={{ width: "80%", padding: 10, alignItems: "center", justifyContent: "center" }}>
           <Link screen="ScreenRegister" style={styles.txtlink}>Create a new Account</Link>
         </TouchableOpacity>
 
