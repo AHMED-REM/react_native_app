@@ -9,7 +9,7 @@ export default function ScreenLogin() {
   const [password, setpassword] = useState('')
 
   const route = useRoute()
-  const { data1, data2 } = route.params
+  const { data1, data2 } = route.params || {}
 
   const handle_login = () => {
     if (username == "" || password == "") {
