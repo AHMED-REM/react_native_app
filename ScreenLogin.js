@@ -17,20 +17,15 @@ export default function ScreenLogin() {
 
         <TextInput
           style={styles.txtinpt}
-          placeholder='Username'
-          value={username}
-          onChangeText={setusername} />
+          placeholder='Username' />
 
         <TextInput
           style={styles.txtinpt}
           placeholder='Password'
-          secureTextEntry={true}
-          value={password}
-          onChangeText={setpassword} />
+          secureTextEntry={true} />
 
         <TouchableOpacity
-          style={styles.btn}
-          onPress={handle_login}>
+          style={styles.btn}>
           <Text style={styles.txtbtn}>Login</Text>
         </TouchableOpacity>
 
