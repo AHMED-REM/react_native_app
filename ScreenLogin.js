@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, Image, ImageBackground, Alert } from 'react-native';
-import { Link } from '@react-navigation/native'
+import { Link, useRoute } from '@react-navigation/native'
 import { useState } from 'react';
 
 
@@ -8,9 +8,8 @@ export default function ScreenLogin() {
   const [username, setusername] = useState('')
   const [password, setpassword] = useState('')
 
-  const route = useRoot()
+  const route = useRoute()
   const { data1, data2 } = route.params
-
 
   const handle_login = () => {
     if (username == "" || password == "") {
