@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, ImageBackground, Image } from 'react-native';
-
+import { Link } from '@react-navigation/native'
 
 export default function ScreenRegister() {
 
@@ -37,7 +37,7 @@ export default function ScreenRegister() {
 
                 <TouchableOpacity
                     style={{ width: "70%", padding: 10, alignItems: "center", justifyContent: "center" }}>
-                    <Text style={styles.txtlink}>Go to Login</Text>
+                    <Link screen="ScreenLogin" style={styles.txtlink}>Go to Login</Link>
                 </TouchableOpacity>
 
             </View>

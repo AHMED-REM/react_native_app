@@ -1,7 +1,22 @@
-import { StyleSheet, Text, View, TextInput, TouchableOpacity, Image, ImageBackground } from 'react-native';
+import { StyleSheet, Text, View, TextInput, TouchableOpacity, Image, ImageBackground, Alert } from 'react-native';
 import { Link } from '@react-navigation/native'
+import { useState } from 'react';
 
 export default function ScreenLogin() {
+  const [username, setusername] = useState("")
+  const [password, setpassword] = useState("")
+
+  const handle_login = () => {
+    if (username == "admin" && password == "admin") {
+      Alert.alert("Accés autorisé !")
+    }
+    else if (username == "" || password == "") {
+      Alert.alert("Remplire username et password !")
+    }
+    else {
+      Alert.alert("Accés non autorisé !")
+    }
+  }
 
   return (
     <ImageBackground
@@ -16,15 +31,20 @@ export default function ScreenLogin() {
 
         <TextInput
           style={styles.txtinpt}
-          placeholder='Username' />
+          placeholder='Username'
+          value={username}
+          onChangeText={setusername} />
 
         <TextInput
           style={styles.txtinpt}
           placeholder='Password'
-          secureTextEntry={true} />
+          secureTextEntry={true}
+          value={password}
+          onChangeText={setpassword} />
 
         <TouchableOpacity
-          style={styles.btn}>
+          style={styles.btn}
+          onPress={handle_login}>
           <Text style={styles.txtbtn}>Login</Text>
         </TouchableOpacity>
 
