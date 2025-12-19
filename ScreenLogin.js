@@ -8,11 +8,15 @@ export default function ScreenLogin() {
   const [username, setusername] = useState('')
   const [password, setpassword] = useState('')
 
+  const route = useRoot()
+  const { data1, data2 } = route.params
+
+
   const handle_login = () => {
     if (username == "" || password == "") {
       Alert.alert("Remplire tous les champs !")
     }
-    else if (username == "admin" && password == "123") {
+    else if (username == data1 && password == data2) {
       Alert.alert("Accés autorisé !")
     }
     else {
