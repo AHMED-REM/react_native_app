@@ -1,8 +1,16 @@
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, ImageBackground, Image } from 'react-native';
-import { Link } from '@react-navigation/native'
+import { Link, useNavigation } from '@react-navigation/native'
+import { useState } from 'react';
 
 
 export default function ScreenRegister() {
+
+    const [username, setusername] = useState('')
+    const [password, setpassword] = useState('')
+    const [email, setemail] = useState('')
+    const [birthdate, setbirthdate] = useState('')
+
+    const navigation = useNavigation()
 
     return (
         <ImageBackground
@@ -17,21 +25,35 @@ export default function ScreenRegister() {
 
                 <TextInput
                     style={styles.txtinpt}
-                    placeholder='Username' />
+                    placeholder='Username'
+                    value={username}
+                    onChangeText={setusername} />
 
                 <TextInput
                     style={styles.txtinpt}
-                    placeholder='Password' />
+                    placeholder='Password'
+                    value={password}
+                    onChangeText={setpassword} />
 
                 <TextInput
                     style={styles.txtinpt}
-                    placeholder='Email' />
+                    placeholder='Email'
+                    value={email}
+                    onChangeText={setemail} />
 
                 <TextInput
                     style={styles.txtinpt}
-                    placeholder='Birthdate' />
+                    placeholder='Birthdate'
+                    value={birthdate}
+                    onChangeText={setbirthdate} />
 
                 <TouchableOpacity
+                    onPress={() => {
+                        navigation.navigate("ScreenLogin", {
+                            data1: username,
+                            data2: password
+                        })
+                    }}
                     style={styles.btn}>
                     <Text style={styles.txtbtn}>Register</Text>
                 </TouchableOpacity>
