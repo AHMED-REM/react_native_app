@@ -1,6 +1,6 @@
-import { StyleSheet, Text, View, TextInput, TouchableOpacity, ImageBackground, Image } from 'react-native';
+import { StyleSheet, Text, View, TextInput, TouchableOpacity, ImageBackground, Image, Alert } from 'react-native';
 import { Link, useNavigation } from '@react-navigation/native'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 
 export default function ScreenRegister() {
@@ -11,6 +11,31 @@ export default function ScreenRegister() {
     const [birthdate, setbirthdate] = useState('')
 
     const navigation = useNavigation()
+
+    useEffect(() => {
+        if (username.match('[0-9]')) {
+            console.log("username valide :)")
+        }
+        else {
+            console.log("username non valide :(")
+        }
+    }, [username])
+
+    useEffect(() => {
+        (password.length >= 8) ?
+            console.log("password valide :)")
+            :
+            console.log("password non valide :(")
+    }, [password])
+
+    useEffect(() => {
+        (email.includes('@gmail.com')) ?
+            console.log("email valide :)")
+            :
+            console.log("email non valide :(")
+    }, [email])
+
+
 
     return (
         <ImageBackground
@@ -68,7 +93,6 @@ export default function ScreenRegister() {
         </ImageBackground>
     );
 }
-
 
 
 const styles = StyleSheet.create({
