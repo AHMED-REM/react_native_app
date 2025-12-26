@@ -20,6 +20,7 @@ export default function ScreenRegister() {
             console.log("password non valide :(")
     }, [password])
 
+
     useEffect(() => {
         (email.includes('@gmail.com')) ?
             console.log("email valide :)")
