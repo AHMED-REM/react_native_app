@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native';
 
-export default function Header() {
+export default function Header(props) {
 
     return (
         <View style={styles.headercontainer}>
@@ -11,8 +11,8 @@ export default function Header() {
             />
 
             <View style={styles.infoscontainer}>
-                <Text style={styles.txtname}>ali</Text>
-                <Text style={styles.txtemail}>ali@gmail.com</Text>
+                <Text style={styles.txtname}>{props.name}</Text>
+                <Text style={styles.txtemail}>{props.email}</Text>
             </View>
 
             <TouchableOpacity onPress={() => { }}>
