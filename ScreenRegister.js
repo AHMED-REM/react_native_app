@@ -65,6 +65,23 @@ export default function ScreenRegister() {
     }, [birthdate])
 
 
+
+    const handle_register = () => {
+        if (msg1.length == 0 && username.length > 0
+            && msg2.length == 0 && password.length > 0
+            && msg3.length == 0 && email.length > 0
+            && msg4.length == 0 && birthdate.length > 0
+        ) {
+            navigation.navigate("ScreenLogin", {
+                data1: username,
+                data2: password,
+            })
+        }
+        else {
+            Alert.alert('check your infromations !')
+        }
+    }
+
     return (
         <ImageBackground
             source={require('./assets/img_bg.jpg')}
@@ -109,12 +126,7 @@ export default function ScreenRegister() {
                 <Text style={{ color: "red" }}>{msg4}</Text>
 
                 <TouchableOpacity
-                    onPress={() => {
-                        navigation.navigate("ScreenLogin", {
-                            data1: username,
-                            data2: password,
-                        })
-                    }}
+                    onPress={handle_register}
                     style={styles.btn}>
                     <Text style={styles.txtbtn}>Register</Text>
                 </TouchableOpacity>
