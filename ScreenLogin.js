@@ -1,10 +1,11 @@
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, Image, ImageBackground, Alert } from 'react-native';
-import { Link, useRoute } from '@react-navigation/native'
+import { Link, useNavigation, useRoute } from '@react-navigation/native'
 import { useState } from 'react';
 
 
 export default function ScreenLogin() {
 
+  const navigation = useNavigation()
   const [username, setusername] = useState('')
   const [password, setpassword] = useState('')
 
@@ -17,6 +18,7 @@ export default function ScreenLogin() {
     }
     else if (username == data1 && password == data2) {
       Alert.alert("Accés autorisé !")
+      navigation.navigate('ScreenDashboard')
     }
     else {
       Alert.alert("Accés non autorisé !")

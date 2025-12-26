@@ -1,9 +1,10 @@
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, Text } from 'react-native';
 
 export default function ScreenDashboard() {
 
   return (
     <View style={styles.container}>
+      <Text>Dashboard</Text>
     </View >
   );
 }
