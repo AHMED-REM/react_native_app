@@ -10,36 +10,59 @@ export default function ScreenRegister() {
     const [email, setemail] = useState('')
     const [birthdate, setbirthdate] = useState('')
 
-    const [msg, setMsg] = useState('')
+    const [msg1, setMsg1] = useState('')
+    const [msg2, setMsg2] = useState('')
+    const [msg3, setMsg3] = useState('')
+    const [msg4, setMsg4] = useState('')
 
     const navigation = useNavigation()
 
+
     useEffect(() => {
         if (username.length > 0) {
-            (!username.match('[A-Z]')) ?
-                setMsg("username doit avoir au moin un char MAJ :(")
+            (username.match('[A-Z]')) ?
+                setMsg1('')
                 :
-                setMsg('')
+                setMsg1("username doit avoir au moin un char MAJ !")
         }
         else {
-            setMsg('')
+            setMsg1('')
         }
     }, [username])
 
+
     useEffect(() => {
-        (password.length >= 8) ?
-            console.log("password valide :)")
+        (password.length > 0 && password.length < 8) ?
+            setMsg2('')
             :
-            console.log("password non valide :(")
+            setMsg2("password doit avoir au moin 8 chars !")
     }, [password])
 
 
     useEffect(() => {
-        (email.includes('@gmail.com')) ?
-            console.log("email valide :)")
-            :
-            console.log("email non valide :(")
+        if (email.length > 0) {
+            (email.includes('@gmail.com')) ?
+                setMsg3('')
+                :
+                setMsg3('email doit contenir @gmail.com !')
+        }
+        else {
+            setMsg3('')
+        }
     }, [email])
+
+
+    useEffect(() => {
+        if (birthdate.length > 0) {
+            (birthdate.match(/^\d{2}\/\d{2}\/\d{4}$/)) ?
+                setMsg4('')
+                :
+                setMsg4('date doit être dd/mm/yyyy !')
+        }
+        else {
+            setMsg4('')
+        }
+    }, [birthdate])
 
 
     return (
@@ -59,7 +82,7 @@ export default function ScreenRegister() {
                     value={username}
                     onChangeText={setusername} />
 
-                <Text style={{ color: "red" }}>{msg}</Text>
+                <Text style={{ color: "red" }}>{msg1}</Text>
 
                 <TextInput
                     style={styles.txtinpt}
@@ -67,11 +90,15 @@ export default function ScreenRegister() {
                     value={password}
                     onChangeText={setpassword} />
 
+                <Text style={{ color: "red" }}>{msg2}</Text>
+
                 <TextInput
                     style={styles.txtinpt}
                     placeholder='Email'
                     value={email}
                     onChangeText={setemail} />
+
+                <Text style={{ color: "red" }}>{msg3}</Text>
 
                 <TextInput
                     style={styles.txtinpt}
@@ -79,12 +106,13 @@ export default function ScreenRegister() {
                     value={birthdate}
                     onChangeText={setbirthdate} />
 
+                <Text style={{ color: "red" }}>{msg4}</Text>
+
                 <TouchableOpacity
                     onPress={() => {
                         navigation.navigate("ScreenLogin", {
                             data1: username,
                             data2: password,
-                            data3: email
                         })
                     }}
                     style={styles.btn}>
