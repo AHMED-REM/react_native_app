@@ -5,11 +5,13 @@ import { useState } from 'react';
 export default function ScreenLogin() {
 
   const navigation = useNavigation()
+
   const [username, setusername] = useState('')
   const [password, setpassword] = useState('')
 
   const route = useRoute()
   const { data1, data2 } = route.params || {}
+
 
   const handle_login = () => {
     if (username == "" || password == "") {
@@ -17,6 +19,7 @@ export default function ScreenLogin() {
     }
     else if (username == data1 && password == data2) {
       Alert.alert("Accés autorisé !")
+      navigation.navigate("ScreenDashboard")
     }
     else {
       Alert.alert("Accés non autorisé !")
