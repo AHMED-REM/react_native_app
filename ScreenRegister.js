@@ -83,7 +83,8 @@ export default function ScreenRegister() {
                     onPress={() => {
                         navigation.navigate("ScreenLogin", {
                             data1: username,
-                            data2: password
+                            data2: password,
+                            data3: email
                         })
                     }}
                     style={styles.btn}>
