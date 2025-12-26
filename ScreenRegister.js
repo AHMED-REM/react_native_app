@@ -33,9 +33,9 @@ export default function ScreenRegister() {
 
     useEffect(() => {
         (password.length > 0 && password.length < 8) ?
-            setMsg2('')
-            :
             setMsg2("password doit avoir au moin 8 chars !")
+            :
+            setMsg2('')
     }, [password])
 
 
