@@ -1,31 +1,17 @@
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, ImageBackground, Image, Alert } from 'react-native';
 import { Link, useNavigation } from '@react-navigation/native'
-import { useState, useEffect, use } from 'react';
+import { useState, useEffect } from 'react';
 
 
 export default function ScreenRegister() {
 
     const [username, setusername] = useState('')
-    const [msg1, setMsg1] = useState('')
     const [password, setpassword] = useState('')
     const [email, setemail] = useState('')
     const [birthdate, setbirthdate] = useState('')
 
     const navigation = useNavigation()
 
-    useEffect(() => {
-        if (!username.length == 0) {
-            if (username.match('[0-9]')) {
-                setMsg1("")
-            }
-            else {
-                setMsg1("username doit contenir un nombre !")
-            }
-        }
-        else {
-            setMsg1("")
-        }
-    }, [username])
 
     useEffect(() => {
         (password.length >= 8) ?
@@ -40,13 +26,6 @@ export default function ScreenRegister() {
             :
             console.log("email non valide :(")
     }, [email])
-
-    useEffect(() => {
-        (birthdate.match(/^\d{2}\/\d{2}\/\d{4}$/)) ?
-            console.log("birthdate valide :)")
-            :
-            console.log("birthdate non valide :(")
-    }, [birthdate])
 
 
     return (
@@ -65,10 +44,6 @@ export default function ScreenRegister() {
                     placeholder='Username'
                     value={username}
                     onChangeText={setusername} />
-
-                <Text style={{ color: "red" }}>
-                    {msg1}
-                </Text>
 
                 <TextInput
                     style={styles.txtinpt}
