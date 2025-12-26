@@ -10,8 +10,21 @@ export default function ScreenRegister() {
     const [email, setemail] = useState('')
     const [birthdate, setbirthdate] = useState('')
 
+    const [msg, setMsg] = useState('')
+
     const navigation = useNavigation()
 
+    useEffect(() => {
+        if (username.length > 0) {
+            (!username.match('[A-Z]')) ?
+                setMsg("username doit avoir au moin un char MAJ :(")
+                :
+                setMsg('')
+        }
+        else {
+            setMsg('')
+        }
+    }, [username])
 
     useEffect(() => {
         (password.length >= 8) ?
@@ -45,6 +58,8 @@ export default function ScreenRegister() {
                     placeholder='Username'
                     value={username}
                     onChangeText={setusername} />
+
+                <Text style={{ color: "red" }}>{msg}</Text>
 
                 <TextInput
                     style={styles.txtinpt}
