@@ -1,6 +1,7 @@
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, Image, ImageBackground, Alert } from 'react-native';
 import { Link, useNavigation, useRoute } from '@react-navigation/native'
 import { useState } from 'react';
+import axios from "axios";
 
 export default function ScreenLogin() {
 
@@ -12,6 +13,26 @@ export default function ScreenLogin() {
   const route = useRoute()
   const { data1, data2 } = route.params || {}
 
+  const handle_login_db = () => {
+    if (username !== '' && password !== '') {
+      axios.get("http://192.168.11.120:3000/user1/" + username)
+        .then(res => {
+          const user = res.data;
+          if (user.password === password) {
+            Alert.alert("Welcome!");
+            navigation.navigate("ScreenDashboard");
+          } else {
+            Alert.alert("Wrong Password!");
+          }
+        })
+        .catch(err => {
+          Alert.alert(JSON.stringify(err.response ? err.response.data : err.message));
+          console.error(err);
+        });
+    } else {
+      Alert.alert("You must fill the form !");
+    }
+  };
 
   const handle_login = () => {
     if (username == "" || password == "") {
@@ -51,7 +72,7 @@ export default function ScreenLogin() {
           value={password}
           onChangeText={setpassword} />
 
-        <TouchableOpacity onPress={handle_login}
+        <TouchableOpacity onPress={handle_login_db}
           style={styles.btn}>
           <Text style={styles.txtbtn}>Login</Text>
         </TouchableOpacity>

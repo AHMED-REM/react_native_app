@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native';
 
-export default function Card() {
+export default function UserCard({ user, onDelete }) {
     return (
         <View style={styles.cardcontainer}>
 
@@ -11,22 +11,22 @@ export default function Card() {
 
             <View style={styles.infoscontainer}>
 
-                <Text style={styles.txtname}>Ali</Text>
-                <Text style={styles.txtemail}>ALi@gmail.com</Text>
-                <Text style={styles.txtdob}>01/01/1999</Text>
+                <Text style={styles.txtname}>{user.username}</Text>
+                <Text style={styles.txtemail}>{user.email}</Text>
+                <Text style={styles.txtdob}>{user.bdate}</Text>
 
                 <View style={styles.btncontainer}>
                     <TouchableOpacity style={[styles.btn, styles.update]}>
                         <Text style={styles.btnText}>Update</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={[styles.btn, styles.delete]}>
+                    <TouchableOpacity style={[styles.btn, styles.delete]} onPress={() => onDelete(user.id_user)}>
                         <Text style={styles.btnText}>Delete</Text>
                     </TouchableOpacity>
                 </View>
 
             </View>
 
-        </View>
+        </View >
     );
 }
 

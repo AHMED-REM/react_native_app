@@ -8,7 +8,7 @@ export default function App() {
   const Stack = createNativeStackNavigator()
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="ScreenDashboard">
+      <Stack.Navigator initialRouteName="ScreenLogin">
         <Stack.Screen name="ScreenLogin"
           component={ScreenLogin}
           options={{ headerShown: false }}

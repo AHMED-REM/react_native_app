@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, ImageBackground, Image, Alert } from 'react-native';
 import { Link, useNavigation } from '@react-navigation/native'
 import { useState, useEffect } from 'react';
-
+import axios from "axios";
 
 export default function ScreenRegister() {
 
@@ -15,8 +15,8 @@ export default function ScreenRegister() {
     const [msg3, setMsg3] = useState('')
     const [msg4, setMsg4] = useState('')
 
-    const navigation = useNavigation()
 
+    const navigation = useNavigation()
 
     useEffect(() => {
         if (username.length > 0) {
@@ -64,7 +64,26 @@ export default function ScreenRegister() {
         }
     }, [birthdate])
 
-
+    const handle_register_db = () => {
+        if (username !== '' && password !== '' && email !== '' && birthdate !== '') {
+            axios.post("http://192.168.11.120:3000/newuser", { username, password, email, birthdate })
+                .then(res => {
+                    const response = res.data;
+                    if (response.message === "User added") {
+                        Alert.alert("Account created successfully ! Id: " + response.id);
+                        navigation.navigate("ScreenLogin");
+                    } else {
+                        Alert.alert("A problem occurred when registering !");
+                    }
+                })
+                .catch(err => {
+                    Alert.alert(JSON.stringify(err.response ? err.response.data : err.message));
+                    console.error(err);
+                });
+        } else {
+            Alert.alert("You must fill the form!");
+        }
+    };
 
     const handle_register = () => {
         if (msg1.length == 0 && username.length > 0
@@ -126,7 +145,7 @@ export default function ScreenRegister() {
                 <Text style={{ color: "red" }}>{msg4}</Text>
 
                 <TouchableOpacity
-                    onPress={handle_register}
+                    onPress={handle_register_db}
                     style={styles.btn}>
                     <Text style={styles.txtbtn}>Register</Text>
                 </TouchableOpacity>
