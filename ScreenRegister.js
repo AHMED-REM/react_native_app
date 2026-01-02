@@ -66,7 +66,7 @@ export default function ScreenRegister() {
 
     const handle_register_db = () => {
         if (username !== '' && password !== '' && email !== '' && birthdate !== '') {
-            axios.post("http://192.168.11.120:3000/newuser", { username, password, email, birthdate })
+            axios.post("http://192.168.110.247:3000/newuser", { username, password, email, birthdate })
                 .then(res => {
                     const response = res.data;
                     if (response.message === "User added") {
